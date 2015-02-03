@@ -1,0 +1,15 @@
+.main{
+    
+    width: 780px;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 40px;
+}
+
+.error{
+    color: red;
+}
+
+.form-group{
+    margin-top: 40px;
+}
