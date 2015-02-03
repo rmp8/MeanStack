@@ -24,15 +24,14 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="page-header">
-                  <h3>Recent Messages for {{message.name}}</h3>
+                  <h3>Recent Messages</h3>
                 </div>
 
-                <div ng-repeat='post in message.messages'>
+                <div class='post_repeat' ng-repeat='post in message.messages'>
                     <h4>{{post.subject}}</h4>
                     <p>{{post.text}}</p>
                 </div>
             </div>
-
             <div class="col-md-6" >
                 <form role='form' ng-show='message.isVisible'>
                     <div class="form-group">
