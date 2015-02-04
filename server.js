@@ -18,11 +18,16 @@ var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
+var request;
+
+app.use(session({secret: 'liirumlaarum', saveUninitialized: true, resave: true,cookie:{maxAge:1000}}));
+
 //This middleware is called for every request
 app.use(function(req,res,next){
     //Store queries object to request
     req.queries = queries;
     req.passport = passport;
+    request = req;
     //Pass to next middleware
     next();
     
@@ -31,7 +36,7 @@ app.use(function(req,res,next){
 //Point static files to public folder
 app.use('/',express.static(__dirname + '/public'));
 app.use(bodyParser.json());
-app.use(session({secret: 'liirumlaarum', saveUninitialized: true, resave: true,cookie:{maxAge:1000}}));
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -44,6 +49,7 @@ io.on('connection',function(socket){
     //wait message 'new message'
     socket.on('new message',function(data){
         console.log(data);
+        queries.saveMessage(data,request);
         //send it to everyone
         io.emit('broadcast_msg',data);
     });

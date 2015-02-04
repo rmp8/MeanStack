@@ -15,11 +15,15 @@ module.controller('LoginController',['$scope','$location','$rootScope','LoginFac
             username:$scope.user.username,
             password:$scope.user.password
         }
-        //This will be called in succesfull login
-        LoginFactory.userLogin(userData).then(function(data){
+        
+        //start login procedure
+        //(This will be called in succesfull login)
+        LoginFactory.userLogin(userData);
+        
+        /*.then(function(data){
             $rootScope.isAuthenticated = true;
             $location.path('/user');
-        });;
+        });;*/
     }
     
     //This is called when register button is pressed

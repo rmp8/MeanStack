@@ -2,15 +2,15 @@ var module = angular.module('MeanStack',['ngRoute','ngResource']);
 
 module.config(function($routeProvider){
     
-    /*
+   
     $routeProvider.when('/',{
-        templateUrl:'partials/index.html',
+        templateUrl:'partials/login.html',
         controller:'LoginController'
-    });*/
+    }); /**/
     
-    $routeProvider.when('/',{
+    $routeProvider.when('/user',{
         templateUrl:'partials/userdata.html',
-        controller:'MessageController'
+        controller:'MessageController',
         //resolve:{loginRequired:loginRequired}
     })
     

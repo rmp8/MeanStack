@@ -1,8 +1,9 @@
-module.controller('MessageController',['$scope','$rootScope','SocketFactory',function($scope,$rootScope,SocketFactory){
+module.controller('MessageController',['$scope','$rootScope','SocketFactory','LoginFactory',function($scope,$rootScope,SocketFactory,LoginFactory){
     $scope.message = {};
     $scope.message.messages = [];
     $scope.message.isVisible = false;
-    
+    $scope.message.name = LoginFactory.userName;
+        
     $scope.message.new = function() {
         
         $scope.message.isVisible = true;
@@ -13,7 +14,8 @@ module.controller('MessageController',['$scope','$rootScope','SocketFactory',fun
         $scope.message.isVisible = false;
         var message = {
             subject:$scope.message.subject,
-            text:$scope.message.text
+            text:$scope.message.text,
+            timestamp:new Date()
         };
         SocketFactory.sendMessage(message);
     }

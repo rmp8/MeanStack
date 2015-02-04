@@ -34,6 +34,7 @@ module.exports = function(passport) {
                 return done(null, false, "wrong password"); 
             }
             console.log('All success');
+            req.session.user = username;
             // All fine continue
             return done(null, user);
         });
