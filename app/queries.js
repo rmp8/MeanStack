@@ -40,7 +40,7 @@ module.exports.getMessagesForUser = function(req,res) {
         path:'messages',
         //match: {subject:'Hello'},
         options:{limit:3},
-        sort:{-id: -1} //descending
+        sort:{_id: -1} //descending
     }
     
     var query = User.find({name:req.session.user}).populate(options);   
