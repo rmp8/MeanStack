@@ -11,7 +11,11 @@ router.post('/register',function(req,res){
     req.queries.registerUser(req,res);
 });
 
- router.get('/logout', function(req, res) {
+router.get('/',function(req,res) {
+    req.queries.getMessagesForUser(req,res);   
+});
+
+router.get('/logout', function(req, res) {
     req.logout();
     res.redirect('/');
 });
